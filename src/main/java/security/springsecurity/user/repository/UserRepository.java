@@ -1,11 +1,9 @@
-package security.springsecurity.User.Repository;
+package security.springsecurity.user.repository;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import security.springsecurity.User.Entity.User;
+import security.springsecurity.user.entity.User;
 
 @Repository
-@RequiredArgsConstructor
 public interface UserRepository extends JpaRepository<User, Long> {
 }

@@ -1,8 +1,8 @@
-package security.springsecurity.User.Controller;
+package security.springsecurity.user.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
-import security.springsecurity.User.Service.UserService;
+import security.springsecurity.user.service.UserService;
 
 @RestController
 @RequiredArgsConstructor

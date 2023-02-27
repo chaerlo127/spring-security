@@ -31,13 +31,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic().disable() // login 화면 나오지 않도록
                 .csrf().disable()
                 .cors().disable()
+                .exceptionHandling()
+                .and()
                 .sessionManagement() // 세션 관련 strategy 설정 가능
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 // jwt를 이용하여 세션이 필요 없기 때문에 세션 정보를 담아두지 않음
                 .and()
                 .authorizeRequests()
-                .antMatchers("users/sign-up").permitAll()
-                .antMatchers("users/login").permitAll()
+                .antMatchers("/users/sign-up").permitAll()
+                .antMatchers("/users/login").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .apply(new JwtSecurityConfig(tokenProvider))
         ;

@@ -82,7 +82,7 @@ public class TokenProvider {
 
         // Claims에서 권한 정보 가져오기
         UserDetails principal = userDetailsService.loadUserByUsername(claims.getSubject());
-        return new UsernamePasswordAuthenticationToken(principal, ", ", principal.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(principal, ",", principal.getAuthorities());
     }
 
     /**

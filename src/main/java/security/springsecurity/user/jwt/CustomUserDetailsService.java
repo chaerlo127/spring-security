@@ -23,7 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return this.userRepository.findByUserId(username)
+        return this.userRepository.findById(Long.parseLong(username))
                 .map(this::createUser)
                 .orElseThrow(() -> new UsernameNotFoundException(username + "의 id를 찾을 수 없습니다."));
     }
@@ -31,7 +31,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     private UserDetails createUser(UserEntity user) {
         GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(user.getRole().name());
         return new org.springframework.security.core.userdetails.User(
-                user.getUserId(),
+                String.valueOf(user.getUserIdx()),
                 user.getPassword(),
                 Collections.singleton(grantedAuthority)
         );

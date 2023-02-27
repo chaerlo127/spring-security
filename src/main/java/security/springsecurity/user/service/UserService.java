@@ -56,7 +56,7 @@ public class UserService {
          * 암호화된 비밀번호 값이 아니라, 실제 사용자가 입력하는 비밀번호로 authentication를 받아와야 함.
          * loadUserByUsername로 userName과 password를 비교하기 때문
          */
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUserId(), password);
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(String.valueOf(user.getUserIdx()), password);
         // 실제로 검증
         // CustomUserDetailsService의 loadUserByUsername 함수가 실행되어 사용자 체크
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);

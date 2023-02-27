@@ -8,15 +8,15 @@ import security.springsecurity.Util.exception.BaseResponse;
 import security.springsecurity.Util.exception.BaseResponseStatus;
 import security.springsecurity.user.DAO.TokenDto;
 import security.springsecurity.user.DAO.UserDto;
+import security.springsecurity.user.jwt.SecurityUtil;
 import security.springsecurity.user.service.UserService;
-
-import java.security.Principal;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
+    private SecurityUtil securityUtil;
 
     @ResponseBody
     @PostMapping("/sign-up")
@@ -33,8 +33,8 @@ public class UserController {
 
     @ResponseBody
     @GetMapping("")
-    public BaseResponse<String> getUserId(Principal principal){
-        return new BaseResponse<>(principal.getName());
+    public BaseResponse<Long> getUserId(){
+        return new BaseResponse<>(SecurityUtil.getCurrentId());
     }
 
 

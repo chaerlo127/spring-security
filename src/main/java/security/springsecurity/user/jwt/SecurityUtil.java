@@ -7,6 +7,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @Slf4j
 public class SecurityUtil {
 
+    /**
+     * Principal로 직접 접근하는 대신에 클래스를 생성하여 원하는 타입으로 return 가능
+     */
     private SecurityUtil() { }
 
     // SecurityContext 에 유저 정보가 저장되는 시점

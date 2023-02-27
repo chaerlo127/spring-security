@@ -13,6 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * 1. 요청 헤더에 Bearer Token을 가져오고 resolveToken 메소드에서 이루어짐.
+ * 2. 토큰 인증 후에, UsernamePasswordAuthenticationToken을 작성하여 사용자 인증 정보를 저장하고 SecurityContext에 인증된 사용자 등록
+ * [ SecurityContext는 SecurityContextHolder의 createEmptyContext()를 통해 생성 가능]
+ *
+ *
+ *
  * [GenericFilterBean]
  * - 기존 Filter에서 얻어올 수 없던 정보였던 Spring의 설정 정보를 가져올 수 있는 확장된 추상 클래스
  * - 서블릿: 사용자의 요청을 받으면 서블릿을 생성해 메모리에 저장해두고, 같은 클래이언트의 요청을 받으면 생성해둔 객체 재활용

@@ -1,4 +1,4 @@
-package security.springsecurity.Util;
+package security.springsecurity.user.jwt;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -8,9 +8,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import security.springsecurity.user.jwt.JwtAccessDeniedHandler;
-import security.springsecurity.user.jwt.JwtAuthenticationEntryPoint;
-import security.springsecurity.user.jwt.TokenProvider;
 
 /**
  * WebSecurityConfigurerAdapter: 스프링 시큐리티의 웹 보안 기능의 초기화 및 설정들을 담당하는

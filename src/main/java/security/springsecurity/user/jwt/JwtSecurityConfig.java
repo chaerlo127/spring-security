@@ -1,4 +1,4 @@
-package security.springsecurity.Util;
+package security.springsecurity.user.jwt;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;

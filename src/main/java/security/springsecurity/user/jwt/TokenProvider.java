@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import security.springsecurity.Util.exception.BaseException;
-import security.springsecurity.Util.exception.BaseResponseStatus;
 import security.springsecurity.user.DAO.TokenDto;
 
 import javax.servlet.ServletRequest;
@@ -72,16 +71,16 @@ public class TokenProvider {
      * @return Authentication
      * @throws BaseException
      */
-    public Authentication getAuthentication(String accessToken) throws BaseException {
+    public Authentication getAuthentication(String accessToken) {
         // Claims: 사용자에 대한 프로퍼티나 속성
         Claims claims = parseClaims(accessToken);
 
+        // 키에 문제가 있다면 에러 발생
         if (claims.get(AUTHORITIES_KEY) == null){
-            throw new BaseException(BaseResponseStatus.EXPIRED_JWT_TOKEN);
+            log.info("키에 문제 발생");
         }
 
         // Claims에서 권한 정보 가져오기
-
         UserDetails principal = userDetailsService.loadUserByUsername(claims.getSubject());
         return new UsernamePasswordAuthenticationToken(principal, ", ", principal.getAuthorities());
     }

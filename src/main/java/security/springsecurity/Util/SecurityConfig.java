@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import security.springsecurity.user.jwt.JwtAccessDeniedHandler;
+import security.springsecurity.user.jwt.JwtAuthenticationEntryPoint;
 import security.springsecurity.user.jwt.TokenProvider;
 
 /**
@@ -20,6 +22,8 @@ import security.springsecurity.user.jwt.TokenProvider;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final TokenProvider tokenProvider;
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -32,6 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .cors().disable()
                 .exceptionHandling()
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                .accessDeniedHandler(jwtAccessDeniedHandler)
                 .and()
                 .sessionManagement() // 세션 관련 strategy 설정 가능
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

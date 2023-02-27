@@ -5,9 +5,14 @@ import lombok.Getter;
 @Getter
 public enum BaseResponseStatus {
     SUCCESS(true, 1000, "요청에 성공하였습니다."),
-    /*
+    /**
+     *  2000 : User
+     */
+    NULL_EXCEPTION(false, 2000, "값을 제대로 입력해주세요."),
+    EXIST_EXCEPTION(false, 2001, "정보 값이 이미 존재합니다."),
+    /**
      * 9500 : jwt
-     * */
+     */
     WRONG_JWT_SIGN_TOKEN(false, 9500, "잘못된 JWT 서명입니다."),
     EXPIRED_JWT_TOKEN(false, 9501, "만료된 JWT 토큰 입니다."),
     UNSUPPORTED_JWT_TOKEN(false, 9502, "지원되지 않는 JWT 토큰입니다."),

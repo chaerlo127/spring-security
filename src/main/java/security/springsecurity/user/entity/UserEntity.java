@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor
-public class User {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userIdx;
@@ -35,9 +35,14 @@ public class User {
     private String refreshToken;
 
     @Builder
-    public User(String userId, String password, Role role) {
+    public UserEntity(String userId, String password, Role role, String refreshToken) {
         this.userId = userId;
         this.password = password;
         this.role = role;
+        this.refreshToken = refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 }

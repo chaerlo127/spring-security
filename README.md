@@ -55,7 +55,7 @@ Security Filter는 프로젝트에서 상속을 받아 사용하며, 개발자�
 
 간단하게 Suvlet Filter에 대해 요약하자면 사용자에게 요청을 받아 Servlet 내에서 Filter를 실행하고 연결된 다음 Filter(Next Filter)에 전달하여 기능을 진행한다. 이때, Filter Chain 내 DelegatingFilterProxy의 FilterChainProxy와 연결하여 Spring의 Bean 의존성을 주입받은 SecurityFilterChain 내 Filter들이 차례대로 실행되면서 인증, 인가 역할을 진행하는 것이다.
 
-### 4. JWT (Json Web Token)
+## 4. JWT (Json Web Token)
 
 JWT는 RFC7519 웹 표준으로 JSON 객체를 이용해 데이터를 주고받을 수 있도록한 웹 토큰이다.
 
